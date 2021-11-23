@@ -1,0 +1,31 @@
+C:\Users\tesli\Desktop\Small Project\Phonebook\obj\Debug\Phonebook.csprojAssemblyReference.cache
+C:\Users\tesli\Desktop\Small Project\Phonebook\obj\Debug\Phonebook.MainScreenForm.resources
+C:\Users\tesli\Desktop\Small Project\Phonebook\obj\Debug\Phonebook.NewNumberRegister.resources
+C:\Users\tesli\Desktop\Small Project\Phonebook\obj\Debug\Phonebook.Properties.Resources.resources
+C:\Users\tesli\Desktop\Small Project\Phonebook\obj\Debug\Phonebook.csproj.GenerateResource.cache
+C:\Users\tesli\Desktop\Small Project\Phonebook\obj\Debug\Phonebook.csproj.CoreCompileInputs.cache
+C:\Users\tesli\Desktop\Small Project\Phonebook\bin\Debug\Phonebook.exe.config
+C:\Users\tesli\Desktop\Small Project\Phonebook\bin\Debug\Phonebook.exe
+C:\Users\tesli\Desktop\Small Project\Phonebook\bin\Debug\Phonebook.pdb
+C:\Users\tesli\Desktop\Small Project\Phonebook\bin\Debug\AutoMapper.dll
+C:\Users\tesli\Desktop\Small Project\Phonebook\bin\Debug\AutoMapper.xml
+C:\Users\tesli\Desktop\Small Project\Phonebook\obj\Debug\Phonebook.csproj.CopyComplete
+C:\Users\tesli\Desktop\Small Project\Phonebook\obj\Debug\Phonebook.exe
+C:\Users\tesli\Desktop\Small Project\Phonebook\obj\Debug\Phonebook.pdb
+C:\Users\tesli\Desktop\Small Project\Phonebook\obj\Debug\Phonebook.NumberDelete.resources
+C:\Users\tesli\Desktop\SmallProject\Phonebook\bin\Debug\Phonebook.exe.config
+C:\Users\tesli\Desktop\SmallProject\Phonebook\bin\Debug\Phonebook.exe
+C:\Users\tesli\Desktop\SmallProject\Phonebook\bin\Debug\Phonebook.pdb
+C:\Users\tesli\Desktop\SmallProject\Phonebook\bin\Debug\AutoMapper.dll
+C:\Users\tesli\Desktop\SmallProject\Phonebook\bin\Debug\AutoMapper.xml
+C:\Users\tesli\Desktop\SmallProject\Phonebook\obj\Debug\Phonebook.csprojAssemblyReference.cache
+C:\Users\tesli\Desktop\SmallProject\Phonebook\obj\Debug\Phonebook.MainScreenForm.resources
+C:\Users\tesli\Desktop\SmallProject\Phonebook\obj\Debug\Phonebook.NewNumberRegister.resources
+C:\Users\tesli\Desktop\SmallProject\Phonebook\obj\Debug\Phonebook.NumberDelete.resources
+C:\Users\tesli\Desktop\SmallProject\Phonebook\obj\Debug\Phonebook.NumberUpdate.resources
+C:\Users\tesli\Desktop\SmallProject\Phonebook\obj\Debug\Phonebook.Properties.Resources.resources
+C:\Users\tesli\Desktop\SmallProject\Phonebook\obj\Debug\Phonebook.csproj.GenerateResource.cache
+C:\Users\tesli\Desktop\SmallProject\Phonebook\obj\Debug\Phonebook.csproj.CoreCompileInputs.cache
+C:\Users\tesli\Desktop\SmallProject\Phonebook\obj\Debug\Phonebook.csproj.CopyComplete
+C:\Users\tesli\Desktop\SmallProject\Phonebook\obj\Debug\Phonebook.exe
+C:\Users\tesli\Desktop\SmallProject\Phonebook\obj\Debug\Phonebook.pdb
