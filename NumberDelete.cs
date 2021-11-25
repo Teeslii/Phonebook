@@ -25,12 +25,11 @@ namespace Phonebook
 
         private void MapperSearch()
         {
-            SearchDto.Name = txtName.Text;
-            SearchDto.Lastname = txtLastname.Text;
+            SearchDto.NameSurname = txtNameSurname.Text;
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDTO>());
             var mapper = new Mapper(config);
             directoryDTO = mapper.Map<PersonDTO>(SearchDto);
-            ResultForm(dataAcces.Search(directoryDTO)); //  mantıklı değil pek 
+            ResultForm(dataAcces.Search(directoryDTO));  
         }
         
         private void ResultForm(bool _resultSearch)
@@ -38,12 +37,12 @@ namespace Phonebook
             if(_resultSearch == true)
             {
                 pnlDelete.Visible = true;
-                lblName.Text = SearchDto.Name;
-                lblLastname.Text = SearchDto.Lastname;
+                lblNameSurname.Text = SearchDto.NameSurname;
+               
             }
             else
             {
-                MessageBox.Show("No record found named "+txtName.Text + " " + txtLastname.Text+ ". Please try again");
+                MessageBox.Show("The data suitable for the " + txtNameSurname.Text + ". you are looking for could not be found in the directory. Please make a selection. End the deletion or try again!");
             }
         }
         private void btnSearch_Click(object sender, EventArgs e)
@@ -62,5 +61,7 @@ namespace Phonebook
         {
             MessageBox.Show("No action was taken.");
         }
+
+        
     }
 }

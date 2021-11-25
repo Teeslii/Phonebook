@@ -30,17 +30,15 @@ namespace Phonebook
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtLastname = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.pnlDelete = new System.Windows.Forms.Panel();
             this.btnYes = new System.Windows.Forms.Button();
             this.btnNo = new System.Windows.Forms.Button();
             this.lblSureQuery = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblLastname = new System.Windows.Forms.Label();
+            this.lblNameSurname = new System.Windows.Forms.Label();
+            this.txtNameSurname = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             this.pnlDelete.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,46 +52,12 @@ namespace Phonebook
             this.label1.TabIndex = 0;
             this.label1.Text = "Please enter the name or surname of the person whose number you want to delete:";
             // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(135, 120);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(100, 20);
-            this.txtName.TabIndex = 1;
-            // 
-            // txtLastname
-            // 
-            this.txtLastname.Location = new System.Drawing.Point(375, 120);
-            this.txtLastname.Name = "txtLastname";
-            this.txtLastname.Size = new System.Drawing.Size(100, 20);
-            this.txtLastname.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(73, 120);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 18);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Name: ";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(277, 122);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 18);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Lastname:";
-            // 
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSearch.Location = new System.Drawing.Point(510, 112);
+            this.btnSearch.Location = new System.Drawing.Point(422, 89);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(125, 33);
+            this.btnSearch.Size = new System.Drawing.Size(128, 35);
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -101,23 +65,22 @@ namespace Phonebook
             // 
             // pnlDelete
             // 
-            this.pnlDelete.Controls.Add(this.lblLastname);
             this.pnlDelete.Controls.Add(this.btnYes);
             this.pnlDelete.Controls.Add(this.btnNo);
             this.pnlDelete.Controls.Add(this.lblSureQuery);
-            this.pnlDelete.Controls.Add(this.lblName);
-            this.pnlDelete.Location = new System.Drawing.Point(29, 168);
+            this.pnlDelete.Controls.Add(this.lblNameSurname);
+            this.pnlDelete.Location = new System.Drawing.Point(29, 139);
             this.pnlDelete.Name = "pnlDelete";
-            this.pnlDelete.Size = new System.Drawing.Size(622, 262);
+            this.pnlDelete.Size = new System.Drawing.Size(622, 194);
             this.pnlDelete.TabIndex = 0;
             this.pnlDelete.Visible = false;
             // 
             // btnYes
             // 
             this.btnYes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnYes.Location = new System.Drawing.Point(251, 149);
+            this.btnYes.Location = new System.Drawing.Point(295, 57);
             this.btnYes.Name = "btnYes";
-            this.btnYes.Size = new System.Drawing.Size(110, 69);
+            this.btnYes.Size = new System.Drawing.Size(110, 42);
             this.btnYes.TabIndex = 5;
             this.btnYes.Text = "Yes";
             this.btnYes.UseVisualStyleBackColor = true;
@@ -126,9 +89,9 @@ namespace Phonebook
             // btnNo
             // 
             this.btnNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnNo.Location = new System.Drawing.Point(425, 149);
+            this.btnNo.Location = new System.Drawing.Point(469, 57);
             this.btnNo.Name = "btnNo";
-            this.btnNo.Size = new System.Drawing.Size(110, 69);
+            this.btnNo.Size = new System.Drawing.Size(110, 42);
             this.btnNo.TabIndex = 4;
             this.btnNo.Text = "No";
             this.btnNo.UseVisualStyleBackColor = true;
@@ -144,35 +107,53 @@ namespace Phonebook
             this.lblSureQuery.TabIndex = 2;
             this.lblSureQuery.Text = "is about to be deleted from the directory, do you confirm?";
             // 
-            // lblName
+            // lblNameSurname
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblName.Location = new System.Drawing.Point(28, 15);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(0, 18);
-            this.lblName.TabIndex = 1;
+            this.lblNameSurname.AutoSize = true;
+            this.lblNameSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblNameSurname.Location = new System.Drawing.Point(28, 15);
+            this.lblNameSurname.Name = "lblNameSurname";
+            this.lblNameSurname.Size = new System.Drawing.Size(0, 18);
+            this.lblNameSurname.TabIndex = 1;
             // 
-            // lblLastname
+            // txtNameSurname
             // 
-            this.lblLastname.AutoSize = true;
-            this.lblLastname.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblLastname.Location = new System.Drawing.Point(131, 15);
-            this.lblLastname.Name = "lblLastname";
-            this.lblLastname.Size = new System.Drawing.Size(0, 18);
-            this.lblLastname.TabIndex = 6;
+            this.txtNameSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtNameSurname.Location = new System.Drawing.Point(195, 97);
+            this.txtNameSurname.Name = "txtNameSurname";
+            this.txtNameSurname.Size = new System.Drawing.Size(172, 22);
+            this.txtNameSurname.TabIndex = 11;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label3.Location = new System.Drawing.Point(32, 97);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(112, 18);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Name Surname";
+            // 
+            // btnBack
+            // 
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnBack.Location = new System.Drawing.Point(640, 391);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(125, 33);
+            this.btnBack.TabIndex = 14;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
             // 
             // NumberDelete
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtNameSurname);
             this.Controls.Add(this.pnlDelete);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtLastname);
-            this.Controls.Add(this.txtName);
             this.Controls.Add(this.label1);
             this.Name = "NumberDelete";
             this.Text = "NumberDelete";
@@ -186,16 +167,14 @@ namespace Phonebook
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.TextBox txtLastname;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Panel pnlDelete;
         private System.Windows.Forms.Label lblSureQuery;
-        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblNameSurname;
         private System.Windows.Forms.Button btnYes;
         private System.Windows.Forms.Button btnNo;
-        private System.Windows.Forms.Label lblLastname;
+        private System.Windows.Forms.TextBox txtNameSurname;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnBack;
     }
 }
