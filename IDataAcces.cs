@@ -9,10 +9,10 @@ namespace Phonebook
 {
     public interface IDataAcces
     {
-        void RegisterDatabase(DirectoryDTO directoryDTO);
-        bool Search(DirectoryDTO directoryDTO);
-        void Delete(DirectoryDTO directoryDTO);
-        void Update(DirectoryDTO directoryDTO);
+        void RegisterDatabase(PersonDTO directoryDTO);
+        bool Search(PersonDTO directoryDTO);
+        void Delete(PersonDTO directoryDTO);
+        void Update(PersonDTO directoryDTO);
         
         
     }

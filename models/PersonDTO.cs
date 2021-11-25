@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Phonebook.models
 {
-    public class DirectoryDTO
+    public class PersonDTO
     {
         public string Name { get; set; }
         public string Lastname { get; set; }

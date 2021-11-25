@@ -21,7 +21,7 @@ namespace Phonebook
 
         private bool _resultSeach;
        
-        public bool Search(DirectoryDTO directoryDTO)
+        public bool Search(PersonDTO directoryDTO)
         {
            using(var connectionSearch = new SqlConnection(connectionString))
             {
@@ -50,7 +50,7 @@ namespace Phonebook
             }
             return _resultSeach;
         }
-        public void Delete(DirectoryDTO directoryDTO)
+        public void Delete(PersonDTO directoryDTO)
         {
             using(var connectionDelete = new SqlConnection(connectionString))
             {
@@ -63,7 +63,7 @@ namespace Phonebook
                 connectionDelete.Close();
             }
         }
-        public void RegisterDatabase(DirectoryDTO directoryDTO)
+        public void RegisterDatabase(PersonDTO directoryDTO)
         {
             using (var connectionRegister = new SqlConnection(connectionString))
             {
@@ -79,7 +79,7 @@ namespace Phonebook
             }
         }
 
-        public void Update(DirectoryDTO directoryDTO)
+        public void Update(PersonDTO directoryDTO)
         {
             using(var ConnectionUpdate = new SqlConnection(connectionString))
             {

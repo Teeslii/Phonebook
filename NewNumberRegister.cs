@@ -27,7 +27,7 @@ namespace Phonebook
         //{
         //    this.dataAcces = dataAcces;
         //}
-        Directory directory = new Directory();
+        Person directory = new Person();
         public void MapperDirectory()
         { 
             directory.Name = txtName.Text;
@@ -35,9 +35,9 @@ namespace Phonebook
             long.TryParse(txtNumber.Text, out long number);
             directory.Number = number;
 
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Directory, DirectoryDTO>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDTO>());
             var mapper= new Mapper(config);
-            var directoryDTO = mapper.Map<DirectoryDTO>(directory);
+            var directoryDTO = mapper.Map<PersonDTO>(directory);
             dataAcces.RegisterDatabase(directoryDTO);
             MessageBox.Show("işlem başarıyla tamamlandı.");
 

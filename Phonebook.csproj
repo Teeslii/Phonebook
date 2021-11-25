@@ -51,8 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAcces.cs" />
-    <Compile Include="Directory.cs" />
-    <Compile Include="models\DirectoryDTO.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="models\PersonDTO.cs" />
     <Compile Include="DirectoryListing.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Phonebook
 {
-    public class Directory
+    public class Person
     {
         public string Name {  get;  set;  }
         public string Lastname { get; set; }

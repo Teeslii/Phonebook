@@ -22,15 +22,15 @@ namespace Phonebook
         }
 
 
-        Directory SearchDto = new Directory();
-        DirectoryDTO directoryDTO;
+        Person SearchDto = new Person();
+        PersonDTO directoryDTO;
         private void MapperDto()
         {
             SearchDto.Name = txtName.Text;
             SearchDto.Lastname = txtLastname.Text;
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Directory, DirectoryDTO>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDTO>());
             var mapper = new Mapper(config);
-            directoryDTO = mapper.Map<DirectoryDTO>(SearchDto);
+            directoryDTO = mapper.Map<PersonDTO>(SearchDto);
             ResultForm(dataAcces.Search(directoryDTO));
         }
 
