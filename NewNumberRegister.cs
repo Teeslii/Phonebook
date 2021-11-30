@@ -21,19 +21,14 @@ namespace Phonebook
             InitializeComponent();
             this.dataAcces = dataAcces;
         }
-        
-       
-        //public NewNumberRegister(IDataAcces dataAcces)
-        //{
-        //    this.dataAcces = dataAcces;
-        //}
+
+
         Person directory = new Person();
         public void MapperDirectory()
         { 
-            directory.Name = txtName.Text;
-            directory.Lastname = txtSurname.Text;
-            long.TryParse(txtNumber.Text, out long number);
-            directory.Number = number;
+             
+            directory.NameSurname = txtNameSurname.Text;
+            directory.Number = txtNumber.Text;
 
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDTO>());
             var mapper= new Mapper(config);

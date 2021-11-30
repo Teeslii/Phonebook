@@ -30,7 +30,7 @@ namespace Phonebook
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtNameSurname = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -45,13 +45,13 @@ namespace Phonebook
             this.label1.TabIndex = 0;
             this.label1.Text = "Please enter the name or surname of the person whose number\r\nyou want to delete:";
             // 
-            // txtName
+            // txtNameSurname
             // 
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtName.Location = new System.Drawing.Point(250, 166);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(198, 29);
-            this.txtName.TabIndex = 6;
+            this.txtNameSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtNameSurname.Location = new System.Drawing.Point(250, 166);
+            this.txtNameSurname.Name = "txtNameSurname";
+            this.txtNameSurname.Size = new System.Drawing.Size(198, 29);
+            this.txtNameSurname.TabIndex = 6;
             // 
             // label2
             // 
@@ -59,9 +59,9 @@ namespace Phonebook
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.Location = new System.Drawing.Point(100, 166);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 18);
+            this.label2.Size = new System.Drawing.Size(116, 18);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Name / Surname:";
+            this.label2.Text = "Name Surname:";
             // 
             // btnSearch
             // 
@@ -79,7 +79,7 @@ namespace Phonebook
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.txtNameSurname);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "DirectorySearching";
@@ -92,7 +92,7 @@ namespace Phonebook
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtNameSurname;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSearch;
     }

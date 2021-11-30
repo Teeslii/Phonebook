@@ -8,16 +8,13 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using Phonebook.models;
-// "Insert into Room(ID, roomNo, checkIn, IsDelete) values ( @ID, @roomNo, GETDATE(), 'False')";
-//   string queryIsDelete = "select roomNo from Room where IsDelete= 'False'";
-
-//   string deleteQuery = "update Room set IsDelete='True', checkOut=GETDATE() where roomNo = @_roomNo";
+ 
 
 namespace Phonebook
 {
     public class DataAcces : IDataAcces
     {
-        private string connectionString = "Data Source=LAPTOP-VBIOM4D2;Initial Catalog = Phonebook; Integrated Security = True";
+        private readonly string connectionString = "Data Source=LAPTOP-VBIOM4D2;Initial Catalog = Phonebook; Integrated Security = True";
 
         private bool _resultSeach;
        
@@ -27,20 +24,18 @@ namespace Phonebook
             {
                
                 connectionSearch.Open();
-                string Search = "select Name, Lastname, Number from Person where Name = @name and Lastname = @lastname";
+                string Search = "select NameSurname from Person where  NameSurname Like '%'+ @NameSurname +'%'";
                 SqlCommand SearchCommand = new SqlCommand(Search,connectionSearch);
-                SearchCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@name", SqlDbType.NChar, 15) { Value = directoryDTO.Name });
-                SearchCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@lastname", SqlDbType.NChar, 15) { Value = directoryDTO.Lastname });
-
+              
+                SearchCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NameSurname", SqlDbType.NChar, 15) { Value = directoryDTO.NameSurname });
 
                 SqlDataReader sqlDataReader = SearchCommand.ExecuteReader();
 
                 while (sqlDataReader.Read())
                 {
-                    directoryDTO.Name = sqlDataReader["Name"].ToString();
-                    directoryDTO.Lastname = sqlDataReader["Lastname"].ToString();
-                    long.TryParse(sqlDataReader["Number"].ToString(), out long Number);
-                    directoryDTO.Number = Number;
+              
+                    directoryDTO.NameSurname = sqlDataReader["NameSurname"].ToString();
+                    directoryDTO.Number = sqlDataReader["Number"].ToString();
 
                     _resultSeach = true;
                 }
@@ -55,25 +50,25 @@ namespace Phonebook
             using(var connectionDelete = new SqlConnection(connectionString))
             {
                 connectionDelete.Open();
-                string Delete = "Delete from Person where  Name = @name and Lastname = @lastname";
+                string Delete = "Delete from Person where  NameSurname = @NameSurname";
                 SqlCommand DeleteCommand = new SqlCommand(Delete, connectionDelete);
-                DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@name", SqlDbType.NChar, 15) { Value = directoryDTO.Name });
-                DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@lastname", SqlDbType.NChar, 15) { Value = directoryDTO.Lastname });
+                DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NameSurname", SqlDbType.NChar, 15) { Value = directoryDTO.NameSurname });
+                
                 DeleteCommand.ExecuteNonQuery();
                 connectionDelete.Close();
             }
-        }
+    }
         public void RegisterDatabase(PersonDTO directoryDTO)
         {
             using (var connectionRegister = new SqlConnection(connectionString))
             {
                 connectionRegister.Open();
 
-                string registerPerson = "Insert into Person(Name, Lastname, Number) values(@name, @lastname, @number)";
+                string registerPerson = "Insert into Person(NameSurname, Number) values(@NameSurname,  @Number)";
                 SqlCommand sqlCommand = new SqlCommand(registerPerson, connectionRegister);
-                sqlCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@name", SqlDbType.NChar, 15) { Value = directoryDTO.Name });
-                sqlCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@lastname", SqlDbType.NChar, 15) { Value = directoryDTO.Lastname });
-                sqlCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@number", SqlDbType.VarChar, 11) { Value = directoryDTO.Number });
+               
+                sqlCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NameSurname", SqlDbType.NChar, 15) { Value = directoryDTO.NameSurname });
+                sqlCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Number", SqlDbType.VarChar, 11) { Value = directoryDTO.Number });
                 sqlCommand.ExecuteNonQuery();
                 connectionRegister.Close();
             }
@@ -84,7 +79,8 @@ namespace Phonebook
             using(var ConnectionUpdate = new SqlConnection(connectionString))
             {
                 ConnectionUpdate.Open();
-                string Update = "Update Person SET Name = , Lastname =  where  Name = @name and Lastname = @lastname  ";
+                string Update = "Update Person SET NameSurname = @NameSurname , Number = @Number where PersonId = @PersonId ";
+
                 ConnectionUpdate.Close();
             }
         }

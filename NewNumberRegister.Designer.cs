@@ -33,7 +33,7 @@ namespace Phonebook
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtNameSurname = new System.Windows.Forms.TextBox();
             this.txtNumber = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -44,9 +44,9 @@ namespace Phonebook
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label1.Location = new System.Drawing.Point(89, 143);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 18);
+            this.label1.Size = new System.Drawing.Size(120, 18);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Name / Surname:";
+            this.label1.Text = "Name  Surname:";
             // 
             // label2
             // 
@@ -78,13 +78,13 @@ namespace Phonebook
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
-            // txtName
+            // txtNameSurname
             // 
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtName.Location = new System.Drawing.Point(239, 143);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(198, 29);
-            this.txtName.TabIndex = 4;
+            this.txtNameSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtNameSurname.Location = new System.Drawing.Point(239, 143);
+            this.txtNameSurname.Name = "txtNameSurname";
+            this.txtNameSurname.Size = new System.Drawing.Size(198, 29);
+            this.txtNameSurname.TabIndex = 4;
             // 
             // txtNumber
             // 
@@ -111,7 +111,7 @@ namespace Phonebook
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtNumber);
-            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.txtNameSurname);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -129,7 +129,7 @@ namespace Phonebook
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnRegister;
-        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtNameSurname;
         private System.Windows.Forms.TextBox txtNumber;
         private System.Windows.Forms.Label label4;
     }

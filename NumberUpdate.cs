@@ -26,8 +26,8 @@ namespace Phonebook
         PersonDTO directoryDTO;
         private void MapperDto()
         {
-            SearchDto.Name = txtName.Text;
-            SearchDto.Lastname = txtLastname.Text;
+            SearchDto.NameSurname = txtNameSurname.Text;
+             
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDTO>());
             var mapper = new Mapper(config);
             directoryDTO = mapper.Map<PersonDTO>(SearchDto);
@@ -39,13 +39,12 @@ namespace Phonebook
             if (_resultSearch == true)
             {
                 pnlUpdate.Visible = true;
-                pnlName.Text = directoryDTO.Name;
-                pnlLastname.Text = directoryDTO.Lastname;
+                pnlNameSurname.Text = directoryDTO.NameSurname;
                 pnlNumber.Text = directoryDTO.Number.ToString();
             }
             else
             {
-                MessageBox.Show("No record found named " + txtName.Text + " " + txtLastname.Text + ". Please try again");
+                MessageBox.Show("No record found named " + txtNameSurname.Text + ". Please try again");
             }
         }
         private void btnSearch_Click(object sender, EventArgs e)
@@ -64,5 +63,7 @@ namespace Phonebook
         {
             MessageBox.Show("No action was taken.");
         }
+
+         
     }
 }

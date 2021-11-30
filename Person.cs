@@ -8,8 +8,9 @@ namespace Phonebook
 {
     public class Person
     {
+        public int PersonId { get; set; }
         public string NameSurname { get; set; }
-        public long Number { get; set; }
+        public string Number { get; set; }
 
     }    
 }   
