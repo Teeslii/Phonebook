@@ -14,33 +14,39 @@ namespace Phonebook
 {
     public class DataAcces : IDataAcces
     {
-        private readonly string connectionString = "Data Source=LAPTOP-VBIOM4D2;Initial Catalog = Phonebook; Integrated Security = True";
+        private readonly string connectionString = ConfigurationManager.ConnectionStrings["Phonebook.Properties.Settings.Setting"].ConnectionString;
 
         private bool _resultSeach;
        
-        public bool Search(PersonDTO directoryDTO)
+        public bool SearchPerson(PersonDTO directoryDTO)
         {
            using(var connectionSearch = new SqlConnection(connectionString))
             {
                
                 connectionSearch.Open();
-                string Search = "select NameSurname from Person where  NameSurname Like '%'+ @NameSurname +'%'";
-                SqlCommand SearchCommand = new SqlCommand(Search,connectionSearch);
+                string Search = "select PersonId from Person where  NameSurname Like '%'+ @NameSurname +'%'";
+                SqlCommand SearchCommand = new SqlCommand(Search, connectionSearch);
               
-                SearchCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NameSurname", SqlDbType.NChar, 15) { Value = directoryDTO.NameSurname });
+                SearchCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NameSurname", SqlDbType.NVarChar, 250) { Value = directoryDTO.NameSurname });
 
-                SqlDataReader sqlDataReader = SearchCommand.ExecuteReader();
 
-                while (sqlDataReader.Read())
+                  var findPersonId = SearchCommand.ExecuteScalar();
+                 
+
+                if (findPersonId == null)
                 {
-              
-                    directoryDTO.NameSurname = sqlDataReader["NameSurname"].ToString();
-                    directoryDTO.Number = sqlDataReader["Number"].ToString();
-
+                    System.Windows.Forms.MessageBox.Show("An error occurred while retrieving the registered customer's ID.");
+                    _resultSeach = false;
+                }
+                else
+                {
+                    if (!int.TryParse(findPersonId.ToString(), out int _PersonId))
+                    {
+                        System.Windows.Forms.MessageBox.Show("An error occurred while retrieving the registered customer's ID.");
+                    }
                     _resultSeach = true;
                 }
 
-                sqlDataReader.Close();
                 connectionSearch.Close();
             }
             return _resultSeach;

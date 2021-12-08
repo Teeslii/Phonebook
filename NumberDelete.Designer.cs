@@ -111,7 +111,7 @@ namespace Phonebook
             // 
             this.lblNameSurname.AutoSize = true;
             this.lblNameSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblNameSurname.Location = new System.Drawing.Point(28, 15);
+            this.lblNameSurname.Location = new System.Drawing.Point(35, 15);
             this.lblNameSurname.Name = "lblNameSurname";
             this.lblNameSurname.Size = new System.Drawing.Size(0, 18);
             this.lblNameSurname.TabIndex = 1;
@@ -156,7 +156,7 @@ namespace Phonebook
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label1);
             this.Name = "NumberDelete";
-            this.Text = "NumberDelete";
+            this.Text = "Delete The Number";
             this.pnlDelete.ResumeLayout(false);
             this.pnlDelete.PerformLayout();
             this.ResumeLayout(false);
