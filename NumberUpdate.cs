@@ -31,20 +31,23 @@ namespace Phonebook
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDTO>());
             var mapper = new Mapper(config);
             directoryDTO = mapper.Map<PersonDTO>(SearchDto);
-            ResultForm(dataAcces.Search(directoryDTO));
+            ResultForm(dataAcces.SearchPerson(directoryDTO));
         }
 
-        private void ResultForm(bool _resultSearch)
+        private void ResultForm(int _resultSearch)
         {
-            if (_resultSearch == true)
+            if (_resultSearch == 0)
             {
+                MessageBox.Show("No record found named " + txtNameSurname.Text + ". Please try again");
                 pnlUpdate.Visible = true;
                 pnlNameSurname.Text = directoryDTO.NameSurname;
                 pnlNumber.Text = directoryDTO.Number.ToString();
             }
             else
             {
-                MessageBox.Show("No record found named " + txtNameSurname.Text + ". Please try again");
+                pnlUpdate.Visible = true;
+                pnlNameSurname.Text = directoryDTO.NameSurname;
+                pnlNumber.Text = directoryDTO.Number.ToString();
             }
         }
         private void btnSearch_Click(object sender, EventArgs e)

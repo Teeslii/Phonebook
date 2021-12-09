@@ -18,7 +18,7 @@ namespace Phonebook
 
         private bool _resultSeach;
        
-        public bool SearchPerson(PersonDTO directoryDTO)
+        public int SearchPerson(PersonDTO directoryDTO)
         {
            using(var connectionSearch = new SqlConnection(connectionString))
             {
@@ -36,7 +36,7 @@ namespace Phonebook
                 if (findPersonId == null)
                 {
                     System.Windows.Forms.MessageBox.Show("An error occurred while retrieving the registered customer's ID.");
-                    _resultSeach = false;
+                    return 0;
                 }
                 else
                 {
@@ -44,21 +44,21 @@ namespace Phonebook
                     {
                         System.Windows.Forms.MessageBox.Show("An error occurred while retrieving the registered customer's ID.");
                     }
-                    _resultSeach = true;
+                    return _PersonId;
                 }
 
                 connectionSearch.Close();
             }
-            return _resultSeach;
+             
         }
-        public void Delete(PersonDTO directoryDTO)
+        public void DeletePerson(PersonDTO directoryDTO)
         {
             using(var connectionDelete = new SqlConnection(connectionString))
             {
                 connectionDelete.Open();
-                string Delete = "Delete from Person where  NameSurname = @NameSurname";
+                string Delete = "Delete from Person where  PersonId = @PersonId";
                 SqlCommand DeleteCommand = new SqlCommand(Delete, connectionDelete);
-                DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NameSurname", SqlDbType.NChar, 15) { Value = directoryDTO.NameSurname });
+                DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@PersonId", SqlDbType.Int) { Value = directoryDTO.PersonId});
                 
                 DeleteCommand.ExecuteNonQuery();
                 connectionDelete.Close();

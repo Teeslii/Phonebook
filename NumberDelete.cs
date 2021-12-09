@@ -29,20 +29,21 @@ namespace Phonebook
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDTO>());
             var mapper = new Mapper(config);
             directoryDTO = mapper.Map<PersonDTO>(SearchDto);
-            ResultForm(dataAcces.Search(directoryDTO));  
+            ResultForm(dataAcces.SearchPerson(directoryDTO));  
         }
         
-        private void ResultForm(bool _resultSearch)
+        private void ResultForm(int _resultSearch)
         {
-            if(_resultSearch == true)
+            if(_resultSearch == 0)
             {
-                pnlDelete.Visible = true;
-                lblNameSurname.Text = SearchDto.NameSurname;
-               
+                MessageBox.Show("The data suitable for the " + txtNameSurname.Text + ". you are looking for could not be found in the directory. Please make a selection. End the deletion or try again!");
+   
             }
             else
             {
-                MessageBox.Show("The data suitable for the " + txtNameSurname.Text + ". you are looking for could not be found in the directory. Please make a selection. End the deletion or try again!");
+                pnlDelete.Visible = true;
+                lblNameSurname.Text = SearchDto.NameSurname;
+                directoryDTO.PersonId = _resultSearch;
             }
         }
         private void btnSearch_Click(object sender, EventArgs e)
@@ -53,7 +54,7 @@ namespace Phonebook
 
         private void btnYes_Click(object sender, EventArgs e)
         {
-            dataAcces.Delete(directoryDTO);
+            dataAcces.DeletePerson(directoryDTO);
             MessageBox.Show("Process completed.");
         }
 
