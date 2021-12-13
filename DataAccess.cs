@@ -12,7 +12,7 @@ using Phonebook.models;
 
 namespace Phonebook
 {
-    public class DataAcces : IDataAcces
+    public class DataAccess : IDataAccess
     {
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["Phonebook.Properties.Settings.Setting"].ConnectionString;
 

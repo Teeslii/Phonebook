@@ -14,12 +14,12 @@ namespace Phonebook
 {
     public partial class NewNumberRegister : Form
     {
-       
-        public IDataAcces dataAcces;
-        public NewNumberRegister(IDataAcces dataAcces)
+
+        private readonly IDataAccess _dataAccess;
+        public NewNumberRegister(IDataAccess _dataAccess)
         {
             InitializeComponent();
-            this.dataAcces = dataAcces;
+            this._dataAccess = _dataAccess;
         }
 
 
@@ -33,7 +33,7 @@ namespace Phonebook
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDTO>());
             var mapper= new Mapper(config);
             var directoryDTO = mapper.Map<PersonDTO>(directory);
-            dataAcces.RegisterDatabase(directoryDTO);
+            _dataAccess.RegisterDatabase(directoryDTO);
             MessageBox.Show("işlem başarıyla tamamlandı.");
 
 

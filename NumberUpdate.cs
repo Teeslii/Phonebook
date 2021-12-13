@@ -14,11 +14,11 @@ namespace Phonebook
 {
     public partial class NumberUpdate : Form
     {
-        IDataAcces dataAcces;
-        public NumberUpdate(IDataAcces dataAcces)
+        private readonly IDataAccess _dataAccess;
+        public NumberUpdate(IDataAccess _dataAccess)
         {
             InitializeComponent();
-            this.dataAcces = dataAcces;
+            this._dataAccess = _dataAccess;
         }
 
 
@@ -31,7 +31,7 @@ namespace Phonebook
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDTO>());
             var mapper = new Mapper(config);
             directoryDTO = mapper.Map<PersonDTO>(SearchDto);
-            ResultForm(dataAcces.SearchPerson(directoryDTO));
+            ResultForm(_dataAccess.SearchPerson(directoryDTO));
         }
 
         private void ResultForm(int _resultSearch)

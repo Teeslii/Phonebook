@@ -12,28 +12,31 @@ namespace Phonebook
 {
     public partial class MainScreenForm : Form
     {
+        private readonly IDataAccess _dataAccess;
+
         public MainScreenForm()
         {
             InitializeComponent();
+            _dataAccess = (IDataAccess)Program.ServiceProvider.GetService(typeof(IDataAccess));
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            NewNumberRegister newNumberRegister = new NewNumberRegister(new DataAcces());
+            NewNumberRegister newNumberRegister = new NewNumberRegister(_dataAccess);
             newNumberRegister.Show();
             this.Hide();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            NumberDelete numberDelete = new NumberDelete(new DataAcces());
+            NumberDelete numberDelete = new NumberDelete(_dataAccess);
             numberDelete.Show();
             this.Hide();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            NumberUpdate numberUpdate = new NumberUpdate(new DataAcces());
+            NumberUpdate numberUpdate = new NumberUpdate(_dataAccess);
             numberUpdate.Show();
             this.Hide();
         }

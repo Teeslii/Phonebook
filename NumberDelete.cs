@@ -14,11 +14,11 @@ namespace Phonebook
 {
     public partial class NumberDelete : Form
     {
-        IDataAcces dataAcces;
-        public NumberDelete(IDataAcces dataAcces)
+        private readonly IDataAccess _dataAccess;
+        public NumberDelete(IDataAccess _dataAccess)
         {
             InitializeComponent();
-            this.dataAcces = dataAcces;
+            this._dataAccess = _dataAccess;
         }
         Person SearchDto = new Person();
         PersonDTO directoryDTO;
@@ -29,7 +29,7 @@ namespace Phonebook
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDTO>());
             var mapper = new Mapper(config);
             directoryDTO = mapper.Map<PersonDTO>(SearchDto);
-            ResultForm(dataAcces.SearchPerson(directoryDTO));  
+            ResultForm(_dataAccess.SearchPerson(directoryDTO));  
         }
         
         private void ResultForm(int _resultSearch)
@@ -54,7 +54,7 @@ namespace Phonebook
 
         private void btnYes_Click(object sender, EventArgs e)
         {
-            dataAcces.DeletePerson(directoryDTO);
+            _dataAccess.DeletePerson(directoryDTO);
             MessageBox.Show("Process completed.");
         }
 

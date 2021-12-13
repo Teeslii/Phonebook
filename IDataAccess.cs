@@ -7,7 +7,7 @@ using Phonebook.models;
 
 namespace Phonebook
 {
-    public interface IDataAcces
+    public interface IDataAccess
     {
         void RegisterDatabase(PersonDTO directoryDTO);
         int SearchPerson(PersonDTO directoryDTO);
