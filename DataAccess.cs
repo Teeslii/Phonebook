@@ -15,8 +15,7 @@ namespace Phonebook
     public class DataAccess : IDataAccess
     {
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["Phonebook.Properties.Settings.Setting"].ConnectionString;
-
-        private bool _resultSeach;
+ 
        
         public int SearchPerson(PersonDTO directoryDTO)
         {

@@ -34,7 +34,7 @@ namespace Phonebook
             var mapper= new Mapper(config);
             var directoryDTO = mapper.Map<PersonDTO>(directory);
             _dataAccess.RegisterDatabase(directoryDTO);
-            MessageBox.Show("işlem başarıyla tamamlandı.");
+            MessageBox.Show("The operation completed successfully.");
 
 
         }
