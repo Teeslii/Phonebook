@@ -30,6 +30,8 @@ namespace Phonebook
         private void InitializeComponent()
         {
             this.pnlUpdate = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pnlNameSurname = new System.Windows.Forms.TextBox();
             this.pnlNumber = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -39,8 +41,6 @@ namespace Phonebook
             this.label3 = new System.Windows.Forms.Label();
             this.txtNameSurname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pnlNameSurname = new System.Windows.Forms.TextBox();
             this.pnlUpdate.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +58,23 @@ namespace Phonebook
             this.pnlUpdate.Size = new System.Drawing.Size(687, 283);
             this.pnlUpdate.TabIndex = 7;
             this.pnlUpdate.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.Location = new System.Drawing.Point(72, 85);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 18);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Name  Surname:";
+            // 
+            // pnlNameSurname
+            // 
+            this.pnlNameSurname.Location = new System.Drawing.Point(237, 88);
+            this.pnlNameSurname.Name = "pnlNameSurname";
+            this.pnlNameSurname.Size = new System.Drawing.Size(161, 20);
+            this.pnlNameSurname.TabIndex = 13;
             // 
             // pnlNumber
             // 
@@ -146,23 +163,6 @@ namespace Phonebook
             this.label1.TabIndex = 8;
             this.label1.Text = "Please enter the name or surname of the person whose number you want to update:";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(72, 85);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 18);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Name  Surname:";
-            // 
-            // pnlNameSurname
-            // 
-            this.pnlNameSurname.Location = new System.Drawing.Point(237, 88);
-            this.pnlNameSurname.Name = "pnlNameSurname";
-            this.pnlNameSurname.Size = new System.Drawing.Size(161, 20);
-            this.pnlNameSurname.TabIndex = 13;
-            // 
             // NumberUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -174,7 +174,7 @@ namespace Phonebook
             this.Controls.Add(this.txtNameSurname);
             this.Controls.Add(this.label1);
             this.Name = "NumberUpdate";
-            this.Text = "NumberUpdate";
+            this.Text = "Update Person ";
             this.pnlUpdate.ResumeLayout(false);
             this.pnlUpdate.PerformLayout();
             this.ResumeLayout(false);
