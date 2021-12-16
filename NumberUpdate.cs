@@ -22,37 +22,36 @@ namespace Phonebook
         }
 
 
-        Person SearchDto = new Person();
-        PersonDTO directoryDTO;
-        private void MapperDto()
-        {
-            SearchDto.NameSurname = txtNameSurname.Text;
+        Person person = new Person();
+        PersonDTO personDTO = new PersonDTO(); 
+        //private void MapperDto()
+        //{
+        //    SearchDto.NameSurname = txtNameSurname.Text;
              
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDTO>());
-            var mapper = new Mapper(config);
-            directoryDTO = mapper.Map<PersonDTO>(SearchDto);
-            ResultForm(_dataAccess.SearchPerson(directoryDTO));
-        }
+        //    var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDTO>());
+        //    var mapper = new Mapper(config);
+        //    directoryDTO = mapper.Map<PersonDTO>(SearchDto);
+        //     
+        //}
 
-        private void ResultForm(int _resultSearch)
+        private void ResultForm()
         {
-            if (_resultSearch == 0)
+            personDTO = _dataAccess.SearchForUpdatePerson(txtNameSurname.Text); 
+
+            if (personDTO.PersonId == 0)
             {
-                MessageBox.Show("No record found named " + txtNameSurname.Text + ". Please try again");
-                pnlUpdate.Visible = true;
-                pnlNameSurname.Text = directoryDTO.NameSurname;
-                pnlNumber.Text = directoryDTO.Number.ToString();
+                pnlUpdate.Visible = false;
             }
             else
             {
                 pnlUpdate.Visible = true;
-                pnlNameSurname.Text = directoryDTO.NameSurname;
-                pnlNumber.Text = directoryDTO.Number.ToString();
+                pnlNameSurname.Text = personDTO.NameSurname;
+                pnlNumber.Text = personDTO.Number;
             }
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            MapperDto();
+            ResultForm();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

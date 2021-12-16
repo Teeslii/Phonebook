@@ -13,7 +13,7 @@ namespace Phonebook
         int SearchPerson(PersonDTO directoryDTO);
         void DeletePerson(PersonDTO directoryDTO);
         void Update(PersonDTO directoryDTO);
-        
-        
+        PersonDTO SearchForUpdatePerson(string _nameSurname);
+        PersonDTO MapperSearchForUpdatePerson(Person person);
     }
 }

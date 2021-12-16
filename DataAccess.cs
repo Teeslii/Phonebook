@@ -8,7 +8,8 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using Phonebook.models;
- 
+using AutoMapper;
+
 
 namespace Phonebook
 {
@@ -62,7 +63,7 @@ namespace Phonebook
                 DeleteCommand.ExecuteNonQuery();
                 connectionDelete.Close();
             }
-    }
+        }
         public void RegisterDatabase(PersonDTO directoryDTO)
         {
             using (var connectionRegister = new SqlConnection(connectionString))
@@ -71,7 +72,7 @@ namespace Phonebook
 
                 string registerPerson = "Insert into Person(NameSurname, Number) values(@NameSurname,  @Number)";
                 SqlCommand sqlCommand = new SqlCommand(registerPerson, connectionRegister);
-               
+
                 sqlCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NameSurname", SqlDbType.NChar, 15) { Value = directoryDTO.NameSurname });
                 sqlCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Number", SqlDbType.VarChar, 11) { Value = directoryDTO.Number });
                 sqlCommand.ExecuteNonQuery();
@@ -79,6 +80,56 @@ namespace Phonebook
             }
         }
 
+        public  PersonDTO MapperSearchForUpdatePerson(Person person)
+        {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDTO>());
+            var mapper = new Mapper(config);
+            var personDTO = mapper.Map<PersonDTO>(person);
+            return personDTO;
+        }
+
+        public PersonDTO SearchForUpdatePerson(string _nameSurname)
+        {
+            using (var connectionSearch = new SqlConnection(connectionString))
+            {
+                connectionSearch.Open();
+
+                Person person = new Person();
+                string SearchQuery = "SELECT TOP 1 PersonId, NameSurname, Number FROM Person WHERE  NameSurname LIKE '%'+ @NameSurname +'%'";
+                var cmd = new SqlCommand(SearchQuery, connectionSearch);
+                cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NameSurname", SqlDbType.NVarChar, 250) { Value = _nameSurname });
+                 
+                var reader = cmd.ExecuteReader();
+                
+                if(!reader.HasRows)
+                {
+                    System.Windows.Forms.MessageBox.Show("No record found named " + _nameSurname + ". Please try again");
+                }
+                else
+                {
+                    
+                    while(reader.Read())
+                    {
+                        if (!int.TryParse(reader["PersonId"].ToString().ToString(), out int _PersonId))
+                        {
+                            System.Windows.Forms.MessageBox.Show("An error occurred while retrieving the registered customer's ID.");
+                        }
+                        person.PersonId = _PersonId;
+                        person.NameSurname = reader["NameSurname"].ToString();
+                        person.Number = reader["Number"].ToString();
+                       
+                    }
+
+                }
+                
+          
+                reader.Close();
+                connectionSearch.Close();
+                return MapperSearchForUpdatePerson(person);
+            }
+
+            
+        }
         public void Update(PersonDTO directoryDTO)
         {
             using(var ConnectionUpdate = new SqlConnection(connectionString))
