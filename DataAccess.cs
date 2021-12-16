@@ -18,7 +18,7 @@ namespace Phonebook
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["Phonebook.Properties.Settings.Setting"].ConnectionString;
  
        
-        public int SearchPerson(PersonDTO directoryDTO)
+        public int SearchPerson(PersonDTO personDTO)
         {
            using(var connectionSearch = new SqlConnection(connectionString))
             {
@@ -27,7 +27,7 @@ namespace Phonebook
                 string Search = "select PersonId from Person where  NameSurname Like '%'+ @NameSurname +'%'";
                 SqlCommand SearchCommand = new SqlCommand(Search, connectionSearch);
               
-                SearchCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NameSurname", SqlDbType.NVarChar, 250) { Value = directoryDTO.NameSurname });
+                SearchCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NameSurname", SqlDbType.NVarChar, 250) { Value = personDTO.NameSurname });
 
 
                   var findPersonId = SearchCommand.ExecuteScalar();
@@ -51,20 +51,20 @@ namespace Phonebook
             }
              
         }
-        public void DeletePerson(PersonDTO directoryDTO)
+        public void DeletePerson(PersonDTO personDTO)
         {
             using(var connectionDelete = new SqlConnection(connectionString))
             {
                 connectionDelete.Open();
                 string Delete = "Delete from Person where  PersonId = @PersonId";
                 SqlCommand DeleteCommand = new SqlCommand(Delete, connectionDelete);
-                DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@PersonId", SqlDbType.Int) { Value = directoryDTO.PersonId});
+                DeleteCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@PersonId", SqlDbType.Int) { Value = personDTO.PersonId});
                 
                 DeleteCommand.ExecuteNonQuery();
                 connectionDelete.Close();
             }
         }
-        public void RegisterDatabase(PersonDTO directoryDTO)
+        public void RegisterDatabase(PersonDTO personDTO)
         {
             using (var connectionRegister = new SqlConnection(connectionString))
             {
@@ -73,8 +73,8 @@ namespace Phonebook
                 string registerPerson = "Insert into Person(NameSurname, Number) values(@NameSurname,  @Number)";
                 SqlCommand sqlCommand = new SqlCommand(registerPerson, connectionRegister);
 
-                sqlCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NameSurname", SqlDbType.NChar, 15) { Value = directoryDTO.NameSurname });
-                sqlCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Number", SqlDbType.VarChar, 11) { Value = directoryDTO.Number });
+                sqlCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NameSurname", SqlDbType.NChar, 15) { Value = personDTO.NameSurname });
+                sqlCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Number", SqlDbType.VarChar, 11) { Value = personDTO.Number });
                 sqlCommand.ExecuteNonQuery();
                 connectionRegister.Close();
             }

@@ -9,9 +9,9 @@ namespace Phonebook
 {
     public interface IDataAccess
     {
-        void RegisterDatabase(PersonDTO directoryDTO);
-        int SearchPerson(PersonDTO directoryDTO);
-        void DeletePerson(PersonDTO directoryDTO);
+        void RegisterDatabase(PersonDTO personDTO);
+        int SearchPerson(PersonDTO personDTO);
+        void DeletePerson(PersonDTO personDTO);
         void UpdatePerson(PersonDTO personDTO);
         PersonDTO SearchForUpdatePerson(string _nameSurname);
         PersonDTO MapperSearchForUpdatePerson(Person person);
