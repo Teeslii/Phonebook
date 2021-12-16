@@ -1,7 +1,7 @@
 ﻿
 namespace Phonebook
 {
-    partial class DirectoryListing
+    partial class ListingPhonebook
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,17 @@ namespace Phonebook
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // ListingPhonebook
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "DirectoryListing";
+            this.Name = "ListingPhonebook";
+            this.Text = "Listing Phonebook";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
