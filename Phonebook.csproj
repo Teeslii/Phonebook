@@ -74,11 +74,11 @@
     <Compile Include="ListingPhonebook.Designer.cs">
       <DependentUpon>ListingPhonebook.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectorySearching.cs">
+    <Compile Include="SearchingPhonebook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DirectorySearching.Designer.cs">
-      <DependentUpon>DirectorySearching.cs</DependentUpon>
+    <Compile Include="SearchingPhonebook.Designer.cs">
+      <DependentUpon>SearchingPhonebook.cs</DependentUpon>
     </Compile>
     <Compile Include="IDataAccess.cs" />
     <Compile Include="MainScreenForm.cs">
@@ -110,8 +110,8 @@
     <EmbeddedResource Include="ListingPhonebook.resx">
       <DependentUpon>ListingPhonebook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DirectorySearching.resx">
-      <DependentUpon>DirectorySearching.cs</DependentUpon>
+    <EmbeddedResource Include="SearchingPhonebook.resx">
+      <DependentUpon>SearchingPhonebook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainScreenForm.resx">
       <DependentUpon>MainScreenForm.cs</DependentUpon>

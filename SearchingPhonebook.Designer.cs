@@ -1,7 +1,7 @@
 ﻿
 namespace Phonebook
 {
-    partial class DirectorySearching
+    partial class SearchingPhonebook
     {
         /// <summary>
         /// Required designer variable.
@@ -83,7 +83,7 @@ namespace Phonebook
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "DirectorySearching";
-            this.Text = "DirectorySearching";
+            this.Text = "Searching Phonebook";
             this.ResumeLayout(false);
             this.PerformLayout();
 

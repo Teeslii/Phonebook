@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Phonebook
 {
-    public partial class DirectorySearching : Form
+    public partial class SearchingPhonebook : Form
     {
-        public DirectorySearching()
+        public SearchingPhonebook()
         {
             InitializeComponent();
         }
