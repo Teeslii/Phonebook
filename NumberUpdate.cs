@@ -23,16 +23,18 @@ namespace Phonebook
 
 
         Person person = new Person();
-        PersonDTO personDTO = new PersonDTO(); 
-        //private void MapperDto()
-        //{
-        //    SearchDto.NameSurname = txtNameSurname.Text;
-             
-        //    var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDTO>());
-        //    var mapper = new Mapper(config);
-        //    directoryDTO = mapper.Map<PersonDTO>(SearchDto);
-        //     
-        //}
+        PersonDTO personDTO = new PersonDTO();
+         private void MapperFilledField()
+         {
+                person.PersonId = personDTO.PersonId;
+                person.NameSurname = pnlNameSurname.Text;
+                person.Number = pnlNumber.Text;
+                
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDTO>());
+                var mapper = new Mapper(config);
+                personDTO = mapper.Map<PersonDTO>(person);
+                _dataAccess.UpdatePerson(personDTO);
+         }   
 
         private void ResultForm()
         {
@@ -56,7 +58,7 @@ namespace Phonebook
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            MapperFilledField();
             MessageBox.Show("Process completed.");
 
         }

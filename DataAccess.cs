@@ -127,15 +127,20 @@ namespace Phonebook
                 connectionSearch.Close();
                 return MapperSearchForUpdatePerson(person);
             }
-
-            
         }
-        public void Update(PersonDTO directoryDTO)
+
+        public void UpdatePerson(PersonDTO personDTO)
         {
             using(var ConnectionUpdate = new SqlConnection(connectionString))
             {
                 ConnectionUpdate.Open();
-                string Update = "Update Person SET NameSurname = @NameSurname , Number = @Number where PersonId = @PersonId ";
+
+                string UpdateQuery = "Update Person SET NameSurname = @NameSurname , Number = @Number where PersonId = @PersonId ";
+                var cmd = new SqlCommand(UpdateQuery, ConnectionUpdate);
+                cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@PersonId", SqlDbType.Int) { Value = personDTO.PersonId });
+                cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NameSurname", SqlDbType.NChar, 15) { Value = personDTO.NameSurname });
+                cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Number", SqlDbType.VarChar, 11) { Value = personDTO.Number });
+                cmd.ExecuteNonQuery();
 
                 ConnectionUpdate.Close();
             }
