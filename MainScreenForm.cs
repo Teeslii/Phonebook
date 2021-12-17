@@ -47,5 +47,12 @@ namespace Phonebook
             listingPhonebook.Show();
             this.Hide();
         }
+
+        private void btnSearching_Click(object sender, EventArgs e)
+        {
+            SearchingPhonebook searchingPhonebook = new SearchingPhonebook(_dataAccess);
+            searchingPhonebook.Show();
+            this.Hide();
+        }
     }
 }

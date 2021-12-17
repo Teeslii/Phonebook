@@ -72,6 +72,7 @@ namespace Phonebook
             this.btnSearchNameSurname.TabIndex = 7;
             this.btnSearchNameSurname.Text = "Search";
             this.btnSearchNameSurname.UseVisualStyleBackColor = true;
+            this.btnSearchNameSurname.Click += new System.EventHandler(this.btnSearchNameSurname_Click);
             // 
             // label3
             // 

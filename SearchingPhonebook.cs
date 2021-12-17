@@ -7,14 +7,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Phonebook.models;
 
 namespace Phonebook
 {
     public partial class SearchingPhonebook : Form
     {
-        public SearchingPhonebook()
+        private readonly IDataAccess _dataAccess;
+        public SearchingPhonebook(IDataAccess _dataAccess)
         {
             InitializeComponent();
+            this._dataAccess = _dataAccess;
+        }
+
+        PersonDTO personDTO = new PersonDTO();
+
+        private void ResultSearchNameSurname()
+        {
+            personDTO = _dataAccess.SearchForUpdatePerson(txtNameSurname.Text);
+
+            if(personDTO.PersonId == 0)
+            {
+               pnlResultFound.Visible = false;
+
+            }
+            else
+            {
+                lblPersonId.Text = personDTO.PersonId.ToString();
+                lblNameSurname.Text = personDTO.NameSurname;
+                lblNumber.Text = personDTO.Number;
+            }
+        }
+
+        private void btnSearchNameSurname_Click(object sender, EventArgs e)
+        {
+            ResultSearchNameSurname();
         }
     }
 }

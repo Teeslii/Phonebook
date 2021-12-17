@@ -106,6 +106,7 @@ namespace Phonebook
             this.btnSearching.TabIndex = 5;
             this.btnSearching.Text = "Searching The Directory";
             this.btnSearching.UseVisualStyleBackColor = true;
+            this.btnSearching.Click += new System.EventHandler(this.btnSearching_Click);
             // 
             // MainScreenForm
             // 

@@ -121,7 +121,6 @@ namespace Phonebook
                     }
 
                 }
-                
           
                 reader.Close();
                 connectionSearch.Close();
