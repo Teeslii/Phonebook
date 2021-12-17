@@ -29,30 +29,27 @@ namespace Phonebook
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewPhonebook = new System.Windows.Forms.ListView();
             this.PersonId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.NameSurname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Number = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // listView1
+            // listViewPhonebook
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewPhonebook.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.PersonId,
             this.NameSurname,
             this.Number});
-            this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.listView1.HideSelection = false;
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.listView1.Location = new System.Drawing.Point(37, 79);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(441, 325);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listViewPhonebook.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.listViewPhonebook.HideSelection = false;
+            this.listViewPhonebook.Location = new System.Drawing.Point(37, 79);
+            this.listViewPhonebook.Name = "listViewPhonebook";
+            this.listViewPhonebook.Size = new System.Drawing.Size(441, 325);
+            this.listViewPhonebook.TabIndex = 1;
+            this.listViewPhonebook.UseCompatibleStateImageBehavior = false;
+            this.listViewPhonebook.View = System.Windows.Forms.View.Details;
             // 
             // PersonId
             // 
@@ -85,9 +82,10 @@ namespace Phonebook
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.listViewPhonebook);
             this.Name = "ListingPhonebook";
             this.Text = "Listing Phonebook";
+            this.Load += new System.EventHandler(this.ListingPhonebook_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -95,7 +93,7 @@ namespace Phonebook
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listViewPhonebook;
         private System.Windows.Forms.ColumnHeader PersonId;
         private System.Windows.Forms.ColumnHeader Number;
         public System.Windows.Forms.ColumnHeader NameSurname;

@@ -40,5 +40,12 @@ namespace Phonebook
             numberUpdate.Show();
             this.Hide();
         }
+
+        private void btnListing_Click(object sender, EventArgs e)
+        {
+            ListingPhonebook listingPhonebook = new ListingPhonebook(_dataAccess);
+            listingPhonebook.Show();
+            this.Hide();
+        }
     }
 }

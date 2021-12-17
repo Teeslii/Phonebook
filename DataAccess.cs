@@ -145,5 +145,38 @@ namespace Phonebook
                 ConnectionUpdate.Close();
             }
         }
+        public List<PersonDTO> MapperListingPhonebook(List<Person> person)
+        {
+
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDTO>());
+            var mapper = new Mapper(config);
+            List<PersonDTO> personDto = mapper.Map<List<Person>, List<PersonDTO>>(person);
+            return personDto;
+
+        }
+        public List<PersonDTO> ListingPhonebook()
+        {
+            using(var connectionList= new SqlConnection(connectionString))
+            {
+                connectionList.Open();
+                string ListingPhonebookQuery = "SELECT PersonId, NameSurname, Number FROM Person";
+                List<Person> personList = new List<Person>();
+                var cmd = new SqlCommand(ListingPhonebookQuery, connectionList);
+
+                var reader = cmd.ExecuteReader();
+
+                while(reader.Read())
+                {
+                    if (!int.TryParse(reader["PersonId"].ToString().ToString(), out int _PersonId))
+                    {
+                        System.Windows.Forms.MessageBox.Show("An error occurred while retrieving the registered customer's ID.");
+                    }
+                    personList.Add(new Person { PersonId = _PersonId, NameSurname = reader["NameSurname"].ToString(), Number = reader["Number"].ToString() });
+                }
+                return MapperListingPhonebook(personList);
+                reader.Close();
+                connectionList.Close();
+            }
+        }
     }
 }

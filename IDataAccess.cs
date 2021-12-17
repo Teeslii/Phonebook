@@ -15,5 +15,7 @@ namespace Phonebook
         void UpdatePerson(PersonDTO personDTO);
         PersonDTO SearchForUpdatePerson(string _nameSurname);
         PersonDTO MapperSearchForUpdatePerson(Person person);
+        List<PersonDTO> ListingPhonebook();
+        List<PersonDTO> MapperListingPhonebook(List<Person> person);
     }
 }
