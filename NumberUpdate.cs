@@ -38,7 +38,7 @@ namespace Phonebook
 
         private void ResultForm()
         {
-            personDTO = _dataAccess.SearchForUpdatePerson(txtNameSurname.Text); 
+            personDTO = _dataAccess.SearchByNameNumber(txtNameSurname.Text, null); 
 
             if (personDTO.PersonId == 0)
             {

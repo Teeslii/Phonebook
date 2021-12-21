@@ -22,10 +22,8 @@ namespace Phonebook
 
         PersonDTO personDTO = new PersonDTO();
 
-        private void ResultSearchNameSurname()
+        private void ResultSearch()
         {
-            personDTO = _dataAccess.SearchForUpdatePerson(txtNameSurname.Text);
-
             if(personDTO.PersonId == 0)
             {
                pnlResultFound.Visible = false;
@@ -40,8 +38,15 @@ namespace Phonebook
         }
 
         private void btnSearchNameSurname_Click(object sender, EventArgs e)
+        { 
+            personDTO = _dataAccess.SearchByNameNumber(txtNameSurname.Text, null);
+            ResultSearch();
+        }
+
+        private void btnSearchNumber_Click(object sender, EventArgs e)
         {
-            ResultSearchNameSurname();
+            personDTO = _dataAccess.SearchByNameNumber(null, txtNumber.Text);
+            ResultSearch();
         }
     }
 }

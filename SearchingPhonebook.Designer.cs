@@ -121,6 +121,7 @@ namespace Phonebook
             this.btnSearchNumber.TabIndex = 14;
             this.btnSearchNumber.Text = "Search";
             this.btnSearchNumber.UseVisualStyleBackColor = true;
+            this.btnSearchNumber.Click += new System.EventHandler(this.btnSearchNumber_Click);
             // 
             // label5
             // 

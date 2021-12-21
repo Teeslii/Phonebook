@@ -73,8 +73,8 @@ namespace Phonebook
                 string registerPerson = "Insert into Person(NameSurname, Number) values(@NameSurname,  @Number)";
                 SqlCommand sqlCommand = new SqlCommand(registerPerson, connectionRegister);
 
-                sqlCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NameSurname", SqlDbType.NChar, 15) { Value = personDTO.NameSurname });
-                sqlCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Number", SqlDbType.VarChar, 11) { Value = personDTO.Number });
+                sqlCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NameSurname", SqlDbType.NChar, 250) { Value = personDTO.NameSurname });
+                sqlCommand.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Number", SqlDbType.VarChar, 16) { Value = personDTO.Number });
                 sqlCommand.ExecuteNonQuery();
                 connectionRegister.Close();
             }
@@ -88,17 +88,35 @@ namespace Phonebook
             return personDTO;
         }
 
-        public PersonDTO SearchForUpdatePerson(string _nameSurname)
+        public PersonDTO SearchByNameNumber(string _nameSurname, string _number)
         {
             using (var connectionSearch = new SqlConnection(connectionString))
             {
                 connectionSearch.Open();
 
                 Person person = new Person();
-                string SearchQuery = "SELECT TOP 1 PersonId, NameSurname, Number FROM Person WHERE  NameSurname LIKE '%'+ @NameSurname +'%'";
+                string SearchQuery;
+ 
+                if(_number == null)
+                {
+                     SearchQuery = "SELECT TOP 1 PersonId, NameSurname, Number FROM Person WHERE  NameSurname LIKE '%'+ @NameSurname +'%'";
+                }
+                else
+                {
+                    SearchQuery = "SELECT TOP 1 PersonId, NameSurname, Number FROM Person WHERE  Number = @Number";
+                }
+
                 var cmd = new SqlCommand(SearchQuery, connectionSearch);
-                cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NameSurname", SqlDbType.NVarChar, 250) { Value = _nameSurname });
-                 
+
+                if(_number == null)
+                {
+                    cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NameSurname", SqlDbType.NVarChar, 250) { Value = _nameSurname });
+                }
+                else
+                {
+                    cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Number", SqlDbType.VarChar, 16) { Value = _number });
+                }
+         
                 var reader = cmd.ExecuteReader();
                 
                 if(!reader.HasRows)
@@ -137,8 +155,8 @@ namespace Phonebook
                 string UpdateQuery = "Update Person SET NameSurname = @NameSurname , Number = @Number where PersonId = @PersonId ";
                 var cmd = new SqlCommand(UpdateQuery, ConnectionUpdate);
                 cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@PersonId", SqlDbType.Int) { Value = personDTO.PersonId });
-                cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NameSurname", SqlDbType.NChar, 15) { Value = personDTO.NameSurname });
-                cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Number", SqlDbType.VarChar, 11) { Value = personDTO.Number });
+                cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@NameSurname", SqlDbType.NChar, 250) { Value = personDTO.NameSurname });
+                cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Number", SqlDbType.VarChar, 16) { Value = personDTO.Number });
                 cmd.ExecuteNonQuery();
 
                 ConnectionUpdate.Close();
