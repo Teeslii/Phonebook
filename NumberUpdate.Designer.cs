@@ -187,6 +187,7 @@ namespace Phonebook
             this.Controls.Add(this.txtNameSurname);
             this.Controls.Add(this.label1);
             this.Name = "NumberUpdate";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Person ";
             this.pnlUpdate.ResumeLayout(false);
             this.pnlUpdate.PerformLayout();

@@ -97,6 +97,7 @@ namespace Phonebook
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listViewPhonebook);
             this.Name = "ListingPhonebook";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listing Phonebook";
             this.Load += new System.EventHandler(this.ListingPhonebook_Load);
             this.ResumeLayout(false);

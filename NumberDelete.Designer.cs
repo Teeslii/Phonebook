@@ -157,6 +157,7 @@ namespace Phonebook
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label1);
             this.Name = "NumberDelete";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Delete The Number";
             this.pnlDelete.ResumeLayout(false);
             this.pnlDelete.PerformLayout();

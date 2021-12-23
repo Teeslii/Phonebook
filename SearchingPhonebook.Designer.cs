@@ -200,6 +200,7 @@ namespace Phonebook
             this.Controls.Add(this.txtNameSurname);
             this.Controls.Add(this.label2);
             this.Name = "SearchingPhonebook";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Searching Phonebook";
             this.pnlResultFound.ResumeLayout(false);
             this.pnlResultFound.PerformLayout();
