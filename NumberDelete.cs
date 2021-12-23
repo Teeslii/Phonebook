@@ -63,6 +63,12 @@ namespace Phonebook
             MessageBox.Show("No action was taken.");
         }
 
-        
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            MainScreenForm mainScreenForm = new MainScreenForm();
+            mainScreenForm.Show();
+            this.Hide();
+
+        }
     }
 }

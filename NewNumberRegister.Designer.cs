@@ -36,6 +36,7 @@ namespace Phonebook
             this.txtNameSurname = new System.Windows.Forms.TextBox();
             this.txtNumber = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -70,7 +71,7 @@ namespace Phonebook
             // btnRegister
             // 
             this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnRegister.Location = new System.Drawing.Point(536, 325);
+            this.btnRegister.Location = new System.Drawing.Point(363, 291);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(133, 50);
             this.btnRegister.TabIndex = 3;
@@ -81,7 +82,7 @@ namespace Phonebook
             // txtNameSurname
             // 
             this.txtNameSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtNameSurname.Location = new System.Drawing.Point(239, 143);
+            this.txtNameSurname.Location = new System.Drawing.Point(298, 143);
             this.txtNameSurname.Name = "txtNameSurname";
             this.txtNameSurname.Size = new System.Drawing.Size(198, 29);
             this.txtNameSurname.TabIndex = 4;
@@ -89,7 +90,7 @@ namespace Phonebook
             // txtNumber
             // 
             this.txtNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtNumber.Location = new System.Drawing.Point(239, 206);
+            this.txtNumber.Location = new System.Drawing.Point(298, 206);
             this.txtNumber.Name = "txtNumber";
             this.txtNumber.Size = new System.Drawing.Size(198, 29);
             this.txtNumber.TabIndex = 6;
@@ -104,11 +105,23 @@ namespace Phonebook
             this.label4.TabIndex = 7;
             this.label4.Text = "Enter the number you want to save:";
             // 
+            // btnBack
+            // 
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnBack.Location = new System.Drawing.Point(632, 389);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(125, 33);
+            this.btnBack.TabIndex = 15;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // NewNumberRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtNumber);
             this.Controls.Add(this.txtNameSurname);
@@ -132,5 +145,6 @@ namespace Phonebook
         private System.Windows.Forms.TextBox txtNameSurname;
         private System.Windows.Forms.TextBox txtNumber;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnBack;
     }
 }

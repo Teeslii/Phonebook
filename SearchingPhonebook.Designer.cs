@@ -42,6 +42,7 @@ namespace Phonebook
             this.lblPersonId = new System.Windows.Forms.Label();
             this.lblNameSurname = new System.Windows.Forms.Label();
             this.pnlResultFound = new System.Windows.Forms.Panel();
+            this.btnBack = new System.Windows.Forms.Button();
             this.pnlResultFound.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -170,12 +171,25 @@ namespace Phonebook
             this.pnlResultFound.Name = "pnlResultFound";
             this.pnlResultFound.Size = new System.Drawing.Size(599, 100);
             this.pnlResultFound.TabIndex = 19;
+            this.pnlResultFound.Visible = false;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnBack.Location = new System.Drawing.Point(636, 393);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(125, 33);
+            this.btnBack.TabIndex = 20;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // SearchingPhonebook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.pnlResultFound);
             this.Controls.Add(this.btnSearchNumber);
             this.Controls.Add(this.txtNumber);
@@ -208,5 +222,6 @@ namespace Phonebook
         private System.Windows.Forms.Label lblPersonId;
         private System.Windows.Forms.Label lblNameSurname;
         private System.Windows.Forms.Panel pnlResultFound;
+        private System.Windows.Forms.Button btnBack;
     }
 }

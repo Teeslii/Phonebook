@@ -41,6 +41,7 @@ namespace Phonebook
             this.label3 = new System.Windows.Forms.Label();
             this.txtNameSurname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             this.pnlUpdate.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +56,7 @@ namespace Phonebook
             this.pnlUpdate.Controls.Add(this.lblSureQuery);
             this.pnlUpdate.Location = new System.Drawing.Point(43, 155);
             this.pnlUpdate.Name = "pnlUpdate";
-            this.pnlUpdate.Size = new System.Drawing.Size(687, 283);
+            this.pnlUpdate.Size = new System.Drawing.Size(577, 283);
             this.pnlUpdate.TabIndex = 7;
             this.pnlUpdate.Visible = false;
             // 
@@ -163,11 +164,23 @@ namespace Phonebook
             this.label1.TabIndex = 8;
             this.label1.Text = "Please enter the name or surname of the person whose number you want to update:";
             // 
+            // btnBack
+            // 
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnBack.Location = new System.Drawing.Point(637, 385);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(125, 33);
+            this.btnBack.TabIndex = 15;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // NumberUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.pnlUpdate);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label3);
@@ -196,5 +209,6 @@ namespace Phonebook
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox pnlNameSurname;
+        private System.Windows.Forms.Button btnBack;
     }
 }

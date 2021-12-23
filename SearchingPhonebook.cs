@@ -31,6 +31,7 @@ namespace Phonebook
             }
             else
             {
+                pnlResultFound.Visible = true;
                 lblPersonId.Text = personDTO.PersonId.ToString();
                 lblNameSurname.Text = personDTO.NameSurname;
                 lblNumber.Text = personDTO.Number;
@@ -47,6 +48,14 @@ namespace Phonebook
         {
             personDTO = _dataAccess.SearchByNameNumber(null, txtNumber.Text);
             ResultSearch();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            MainScreenForm mainScreenForm = new MainScreenForm();
+            mainScreenForm.Show();
+            this.Hide();
+
         }
     }
 }
