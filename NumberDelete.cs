@@ -14,11 +14,11 @@ namespace Phonebook
 {
     public partial class NumberDelete : Form
     {
-        IDataAcces dataAcces;
-        public NumberDelete(IDataAcces dataAcces)
+        private readonly IDataAccess _dataAccess;
+        public NumberDelete(IDataAccess _dataAccess)
         {
             InitializeComponent();
-            this.dataAcces = dataAcces;
+            this._dataAccess = _dataAccess;
         }
         Person SearchDto = new Person();
         PersonDTO directoryDTO;
@@ -29,20 +29,21 @@ namespace Phonebook
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDTO>());
             var mapper = new Mapper(config);
             directoryDTO = mapper.Map<PersonDTO>(SearchDto);
-            ResultForm(dataAcces.Search(directoryDTO));  
+            ResultForm(_dataAccess.SearchPerson(directoryDTO));  
         }
         
-        private void ResultForm(bool _resultSearch)
+        private void ResultForm(int _resultSearch)
         {
-            if(_resultSearch == true)
+            if(_resultSearch == 0)
             {
-                pnlDelete.Visible = true;
-                lblNameSurname.Text = SearchDto.NameSurname;
-               
+                MessageBox.Show("The data suitable for the " + txtNameSurname.Text + ". you are looking for could not be found in the directory. Please make a selection. End the deletion or try again!");
+   
             }
             else
             {
-                MessageBox.Show("The data suitable for the " + txtNameSurname.Text + ". you are looking for could not be found in the directory. Please make a selection. End the deletion or try again!");
+                pnlDelete.Visible = true;
+                lblNameSurname.Text = SearchDto.NameSurname;
+                directoryDTO.PersonId = _resultSearch;
             }
         }
         private void btnSearch_Click(object sender, EventArgs e)
@@ -53,7 +54,7 @@ namespace Phonebook
 
         private void btnYes_Click(object sender, EventArgs e)
         {
-            dataAcces.Delete(directoryDTO);
+            _dataAccess.DeletePerson(directoryDTO);
             MessageBox.Show("Process completed.");
         }
 
@@ -62,6 +63,12 @@ namespace Phonebook
             MessageBox.Show("No action was taken.");
         }
 
-        
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            MainScreenForm mainScreenForm = new MainScreenForm();
+            mainScreenForm.Show();
+            this.Hide();
+
+        }
     }
 }

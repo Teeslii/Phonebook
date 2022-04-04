@@ -92,8 +92,9 @@ namespace Phonebook
             this.btnListing.Name = "btnListing";
             this.btnListing.Size = new System.Drawing.Size(196, 98);
             this.btnListing.TabIndex = 4;
-            this.btnListing.Text = "Listing The Directory";
+            this.btnListing.Text = "Listing The Phonebook";
             this.btnListing.UseVisualStyleBackColor = true;
+            this.btnListing.Click += new System.EventHandler(this.btnListing_Click);
             // 
             // btnSearching
             // 
@@ -103,8 +104,9 @@ namespace Phonebook
             this.btnSearching.Name = "btnSearching";
             this.btnSearching.Size = new System.Drawing.Size(196, 98);
             this.btnSearching.TabIndex = 5;
-            this.btnSearching.Text = "Searching The Directory";
+            this.btnSearching.Text = "Searching The Phonebook";
             this.btnSearching.UseVisualStyleBackColor = true;
+            this.btnSearching.Click += new System.EventHandler(this.btnSearching_Click);
             // 
             // MainScreenForm
             // 
@@ -120,6 +122,7 @@ namespace Phonebook
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainScreenForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Screen";
             this.ResumeLayout(false);
             this.PerformLayout();

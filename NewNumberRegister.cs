@@ -14,32 +14,27 @@ namespace Phonebook
 {
     public partial class NewNumberRegister : Form
     {
-       
-        public IDataAcces dataAcces;
-        public NewNumberRegister(IDataAcces dataAcces)
+
+        private readonly IDataAccess _dataAccess;
+        public NewNumberRegister(IDataAccess _dataAccess)
         {
             InitializeComponent();
-            this.dataAcces = dataAcces;
+            this._dataAccess = _dataAccess;
         }
-        
-       
-        //public NewNumberRegister(IDataAcces dataAcces)
-        //{
-        //    this.dataAcces = dataAcces;
-        //}
+
+
         Person directory = new Person();
         public void MapperDirectory()
         { 
-            directory.Name = txtName.Text;
-            directory.Lastname = txtSurname.Text;
-            long.TryParse(txtNumber.Text, out long number);
-            directory.Number = number;
+             
+            directory.NameSurname = txtNameSurname.Text;
+            directory.Number = txtNumber.Text;
 
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDTO>());
             var mapper= new Mapper(config);
             var directoryDTO = mapper.Map<PersonDTO>(directory);
-            dataAcces.RegisterDatabase(directoryDTO);
-            MessageBox.Show("işlem başarıyla tamamlandı.");
+            _dataAccess.RegisterDatabase(directoryDTO);
+            MessageBox.Show("The operation completed successfully.");
 
 
         }
@@ -50,6 +45,12 @@ namespace Phonebook
             
         }
 
-       
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            MainScreenForm mainScreenForm = new MainScreenForm();
+            mainScreenForm.Show();
+            this.Hide();
+
+        }
     }
 }

@@ -14,55 +14,67 @@ namespace Phonebook
 {
     public partial class NumberUpdate : Form
     {
-        IDataAcces dataAcces;
-        public NumberUpdate(IDataAcces dataAcces)
+        private readonly IDataAccess _dataAccess;
+        public NumberUpdate(IDataAccess _dataAccess)
         {
             InitializeComponent();
-            this.dataAcces = dataAcces;
+            this._dataAccess = _dataAccess;
         }
 
 
-        Person SearchDto = new Person();
-        PersonDTO directoryDTO;
-        private void MapperDto()
-        {
-            SearchDto.Name = txtName.Text;
-            SearchDto.Lastname = txtLastname.Text;
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDTO>());
-            var mapper = new Mapper(config);
-            directoryDTO = mapper.Map<PersonDTO>(SearchDto);
-            ResultForm(dataAcces.Search(directoryDTO));
-        }
+        Person person = new Person();
+        PersonDTO personDTO = new PersonDTO();
+         private void MapperFilledField()
+         {
+                person.PersonId = personDTO.PersonId;
+                person.NameSurname = pnlNameSurname.Text;
+                person.Number = pnlNumber.Text;
+                
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDTO>());
+                var mapper = new Mapper(config);
+                personDTO = mapper.Map<PersonDTO>(person);
+                _dataAccess.UpdatePerson(personDTO);
+         }   
 
-        private void ResultForm(bool _resultSearch)
+        private void ResultForm()
         {
-            if (_resultSearch == true)
+            personDTO = _dataAccess.SearchByNameNumber(txtNameSurname.Text, null); 
+
+            if (personDTO.PersonId == 0)
             {
-                pnlUpdate.Visible = true;
-                pnlName.Text = directoryDTO.Name;
-                pnlLastname.Text = directoryDTO.Lastname;
-                pnlNumber.Text = directoryDTO.Number.ToString();
+                pnlUpdate.Visible = false;
             }
             else
             {
-                MessageBox.Show("No record found named " + txtName.Text + " " + txtLastname.Text + ". Please try again");
+                pnlUpdate.Visible = true;
+                pnlNameSurname.Text = personDTO.NameSurname;
+                pnlNumber.Text = personDTO.Number;
             }
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            MapperDto();
+            ResultForm();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            MapperFilledField();
             MessageBox.Show("Process completed.");
 
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+          
             MessageBox.Show("No action was taken.");
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            MainScreenForm mainScreenForm = new MainScreenForm();
+            mainScreenForm.Show();
+            this.Hide();
+
         }
     }
 }
